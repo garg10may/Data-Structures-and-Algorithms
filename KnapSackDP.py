@@ -23,6 +23,8 @@ def getValue(item):
 #using recusion and dynamic programming, a very significant improvement due to D.P.
 
 def maxVal(toConsider, avail, memo={}):
+    global numCalls
+    numCalls +=1
     try:
         result = memo[(toConsider, avail)]
     except:
@@ -42,6 +44,8 @@ def maxVal(toConsider, avail, memo={}):
         memo[(toConsider, avail)] = result
     return result
 
+numCalls = 0
 print maxVal(itemsList,400)
+print 'No. of calls %s'%(numCalls)
 
 

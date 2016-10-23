@@ -22,6 +22,8 @@ def getValue(item):
 
 #using reucrsion and eliminating choices.
 def maxVal(toConsider, avail):
+    global numCalls
+    numCalls +=1
     if toConsider == () or avail == 0:
         result = (0,())
     elif getWeight(toConsider[0][0]) > avail:
@@ -37,4 +39,6 @@ def maxVal(toConsider, avail):
             result = (withoutVal, withoutToTake)
     return result
 
+numCalls =0
 print maxVal(itemsList,400)
+print numCalls

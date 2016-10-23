@@ -82,6 +82,7 @@ def bruteForceKS( itemList, maxWeight):
 
 #print bruteForceKS(a.itemList, 10)
 
+#item, weight, value
 sampleList = (
     ("map", 9, 150), ("compass", 13, 35), ("water", 153, 200), ("sandwich", 50, 160),
     ("glucose", 15, 60), ("tin", 68, 45), ("banana", 27, 60), ("apple", 39, 40),
@@ -162,7 +163,6 @@ def pureDynamicKS(items, maxWeight):
         temp.append( (i, i.weight, i.value))
 
     items = sorted( temp, key=lambda x:x[1])
-    print items
     rows = len(items)
     cols = maxWeight
 
@@ -177,6 +177,6 @@ def pureDynamicKS(items, maxWeight):
                             (  item[0].value + T[i-1][j-item[0].weight]   ), 
                                T[i-1][j]
                              )
-    print T[rows-1][cols-1]
+    return T[rows-1][cols-1]
 
-pureDynamicKS(a.itemList, 10)
+print pureDynamicKS(sample1, 400)
