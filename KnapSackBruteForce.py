@@ -1,6 +1,6 @@
 from itertools import combinations
 
-# item, weight, value
+# item, weight, and value
 itemsList = (
     ("map", 9, 150), ("compass", 13, 35), ("water", 153, 200), ("sandwich", 50, 160),
     ("glucose", 15, 60), ("tin", 68, 45), ("banana", 27, 60), ("apple", 39, 40),
