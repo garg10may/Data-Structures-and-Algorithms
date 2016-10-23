@@ -9,7 +9,6 @@ sampleList = (
     ("socks", 4, 50), ("book", 30, 10),
     )
 
-
 class item(object):
 
     def __init__(self, name, value, weight):
@@ -60,7 +59,7 @@ def pureDynamicKS(items, maxWeight):
     for i in items:
         temp.append( (i, i.weight, i.value))
 
-    items = sorted( temp, key=lambda x:x[1])
+    items = temp
     rows = len(items)
     cols = maxWeight
 
@@ -79,8 +78,36 @@ def pureDynamicKS(items, maxWeight):
                                T[i-1][j]
                              )
                 numCalls +=1
-    return T[rows-1][cols-1]
+    return T, T[rows-1][cols-1]
 
 numCalls = 0
-print pureDynamicKS(sample1, 400)
+matrix, maxValue = pureDynamicKS(sample1, 400)
+print maxValue
 print 'No. of calls %s'%(numCalls)
+
+def findElements(T, items):
+    '''T is the matrix which stores the maxed values corresponding to that weight and items'''
+    row = len(T)-1
+    col = len(T[0]) -1 
+    result = []
+    while row >=0 and col >=0 and T[row][col] > 0:
+        if T[row][col] == T[row-1][col]:
+            if T[row][col] <> T[row-2][col]:                
+                #take element from above, reduce the weight of it
+                result.append(items[row-1])
+                row = row -2 #item has already been included therefore we move one row above
+                col = col - items[row].weight
+            else:
+                row = row-1
+
+        else:
+            included = items[row]
+            result.append(included)
+            row = row -1
+            #deduct weight of item which was included
+            col = col - included.weight
+    return result
+
+items= findElements( matrix, sample1)
+print [ i.name for i in items]
+
