@@ -111,3 +111,39 @@ def findElements(T, items):
 items= findElements( matrix, sample1)
 print [ i.name for i in items]
 
+
+def pureDynamicKS2(items, maxWeight):
+
+    def bestvalue(i, j, d={}):
+        global NumCalls
+        NumCalls +=1
+        try:
+            return d[(i, j)]
+        except:
+            if i == 0: 
+                d[(i,j)] = 0
+                return 0
+            weight = items[i-1].weight
+            value = items[i-1].value
+            if weight > j:
+                d[(i,j)] = bestvalue(i-1,j)
+                return d[(i, j)]
+            else:
+                d[(i,j)] =  max(bestvalue(i - 1, j),
+                           bestvalue(i - 1, j - weight) + value)
+                return d[(i, j)]
+
+    ## still not sure how this is working
+    result = []
+    j = maxWeight
+    for k in xrange(len(items), 0, -1):
+        if bestvalue(k, j) != bestvalue(k - 1, j):
+            result.append(items[k - 1].name)
+            j -= items[k - 1].weight
+    result.reverse()
+    return bestvalue( len(items), maxWeight), result
+
+
+NumCalls = 0
+print pureDynamicKS2(sample1, 400)
+print 'No. of Calls %s'%(NumCalls)
