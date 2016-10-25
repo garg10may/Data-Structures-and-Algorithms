@@ -40,6 +40,8 @@ print LCS('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
 # Need not be continuous
 # abcd 1ab1c1 --> abc
 
+
+# this is still wrong
 def LCS2(s1, s2):
 
     index1 = 0
@@ -57,5 +59,21 @@ def LCS2(s1, s2):
         index1 += 1
     return largest
 
-    
-print LCS('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+
+print LCS2('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+
+def LCS3( s1, s2):
+    row = len(s1)
+    col = len(s2)
+    T = [ [ 0 for i in range(col)] for j in range(row)  ]
+    for i in (range(1,row)):
+        for j in range( 1,col):
+            if s1[i-1] == s2[j-1]:
+                T[i][j] = 1 + T[i-1][j-1]
+            else:
+                T[i][j] = max( T[i-1][j], 
+                               T[i][j-1] )
+    return T
+
+T =  LCS3('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+print T[-1][-1]
