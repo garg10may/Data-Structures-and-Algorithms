@@ -144,8 +144,14 @@ def maxVal(toConsider, avail, memo={}):
             withVal += nextItem.getValue()
             withoutVal, withoutToTake = maxVal(toConsider[1:], avail, memo)
             if withVal > withoutVal:
-                #withToTake.append(nextItem) this is still ambigious why this small change is resulting in such absurd answer. Need to debug properly, 
-                #therefore I say, recursion is so difficult, you just don't see things as they are supposed to be :P
+                #below will results into extra items being captured, because say while the code is going in 
+                #nonInclude block it returns back due to memo result, but the include has extra item, similarly
+                #it can recursively return so many times in that block and come back from memo result. 
+                #so if you just remove the memo and code would run fine even with below. 
+                #in general you shouldn't have appended to include since we need to send the one new item to 
+                #the code. Not append it our include block. 
+                #include.append(items[0])
+                #result = include, valueInclude
                 result = (withVal, withToTake + [nextItem])
             else:
                 result = (withoutVal, withoutToTake)
