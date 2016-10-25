@@ -1,4 +1,6 @@
-#Given two strings find the longest common subsequence between them
+#Given two strings find the longest common subsequence between them, the sequence should be continuous
+# abcd 1abcd1 --> abcd
+# abcd 1ab1c1 --> ab 
 
 
 def LCS(s1, s2, d = {}):
@@ -18,7 +20,7 @@ def LCS(s1, s2, d = {}):
         else:
             return result2
 
-print LCS('tanmayorangebananaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+print LCS('tanmayanganaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
 
 
 def LCS(s1, s2, d = {}):
@@ -33,4 +35,27 @@ def LCS(s1, s2, d = {}):
     else:
         return result2
 
-print LCS('tanmayorangebananaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+print LCS('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+
+# Need not be continuous
+# abcd 1ab1c1 --> abc
+
+def LCS2(s1, s2):
+
+    index1 = 0
+    largest = ""
+    while index1 != len(s1):
+        index2 = 0   
+        result = ''        
+        for i in s1[index1:]:
+            new = s2[index2:]
+            if new.find(i) != -1: #it exists
+                index2 += new.index(i) + 1
+                result += i
+        if len(result) > len(largest):
+            largest = result
+        index1 += 1
+    return largest
+
+    
+print LCS('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
