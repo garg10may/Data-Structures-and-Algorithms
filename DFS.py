@@ -9,7 +9,10 @@ def printPath(path):
             result = result + '->'
     return result
 
-def DFS(graph, start, end, path, shortest):
+#DFS1 --> To find the shortest path between 2 nodes, there's no concept of shortest without end
+#DFS2 --> To find the longest path of all paths. 
+#Essentially one has to understand how the recursive nature is working, different comparisons can always be made
+def DFS1(graph, start, end, path=[], shortest=None):
     """Assumes graph is a digraph; start and end are nodes;
        path and shortest are lists of nodes
        Returns a shortest path from start to end in graph"""
@@ -20,15 +23,24 @@ def DFS(graph, start, end, path, shortest):
     for node in graph.childrenOf(start):
         if node not in path: #avoid cycles
             if shortest == None or len(path) < len(shortest):
-                newPath = DFS(graph, node, end, path, shortest)
+                newPath = DFS1(graph, node, end, path, shortest)
                 if newPath != None:
                     shortest = newPath
     return shortest
 
-def search(graph, start, end):
-    """Assumes graph is a Digraph; start and end are nodes
-       Returns a shortest path from start to end in graph"""
-    return DFS(graph, start, end, [], None)
+def DFS2(graph, start, path=[], maxPath=[]):
+    path = path + [start]
+    print 'Current DFS path: %s'%(printPath(path))
+    if graph.childrenOf(start) == [] :
+        return path
+    else:
+        for child in graph.childrenOf(start):
+            if child not in path:
+                newPath = DFS2(graph, child, path, maxPath)
+                if len(newPath) > len(maxPath):
+                    maxPath = newPath
+    return maxPath
+
 
 def testSP():
     nodes = []
@@ -50,7 +62,10 @@ def testSP():
     g.addEdge(Edge(nodes[0], nodes[4]))
     g.addEdge(Edge(nodes[4], nodes[5]))
     g.addEdge(Edge(nodes[0], nodes[5]))
-    sp = search(g, nodes[0], nodes[5])
-    print 'Shortest path found by DFS:', printPath(sp)
+    shortest = DFS1(g, nodes[0], nodes[5])
+    longest = DFS2(g, nodes[0])
+
+    print 'Shortest path found by DFS:', printPath(shortest)
+    print 'Longest path found by DFS:', printPath(longest)
 
 testSP()
