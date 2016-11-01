@@ -2,7 +2,6 @@
 # abcd 1abcd1 --> abcd
 # abcd 1ab1c1 --> ab 
 
-
 def LCS(s1, s2, d = {}):
     try:
         return d[(s1,s2)]
@@ -21,7 +20,6 @@ def LCS(s1, s2, d = {}):
             return result2
 
 print LCS('tanmayanganaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
-
 
 def LCS(s1, s2, d = {}):
     if s2.find(s1) != -1:
@@ -60,7 +58,7 @@ def LCS2(s1, s2):
     return largest
 
 
-print LCS2('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+print LCS2('tanmayorandaabcdef', "anmabananaakjlkjkojhanbcorangej")
 
 def LCS3( s1, s2):
     row = len(s1)
@@ -75,5 +73,6 @@ def LCS3( s1, s2):
                                T[i][j-1] )
     return T
 
-T =  LCS3('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
+T =  LCS3('tanmayorandaabcdef', "anmabananaakjlkjkojhanbcorangej")
 print T[-1][-1]
+
