@@ -30,8 +30,6 @@ class WeightedEdge(Edge):
     def __str__(self):
         return self.src.getName() + '->(' + str(self.weight) + ')' + self.dest.getName()
 
-
-
 class Digraph(object):
     #nodes is a list of the nodes in the graph
     #edges is a dict mapping each node to a list of its children
