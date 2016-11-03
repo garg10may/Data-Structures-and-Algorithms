@@ -22,11 +22,13 @@ def BFS(graph, start, end):
         print ('Current BFS path:', printPath(tmpPath))
         lastNode = tmpPath[-1]
         if lastNode == end:
+            #since at same level, the first returned would be the shortest
             return tmpPath
         else:
             for child in graph.childrenOf(lastNode):
                 if child not in tmpPath:
                     pathQueue.append(tmpPath + [child])
+    #if no path found
     return None
 
 
