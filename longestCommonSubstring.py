@@ -24,7 +24,7 @@ def LCS(s1, s2, d = {}):
             return result2
 numCalls = 0
 print LCS('banannaorangekiwi', 'appleorangepomengranate')
-print numCalls
+print 'Number of calls %s'%(numCalls)
 
 #recursion 
 #Complexity 2^len(s1 or s2, whichever is lower)
@@ -45,15 +45,16 @@ def LCS2(s1, s2):
         return result2
 
 numCalls = 0
+print
 print LCS2('banannaorangekiwi', 'appleorangepomengranate')
-print numCalls
+print 'Number of calls %s'%(numCalls)
 #try this without the len(s1) > len(s2) condition, it should take few secs
 numCalls = 0
+print
 print LCS2('appleorangepomengranate','banannaorangekiwi')
-print numCalls
-print LCS2('c','ab')
+print 'Number of calls %s'%(numCalls)
 
-
+#recursion
 #highly inefficient, found on some website, my computer not able to run it
 #also it only calculates the length, not sure what they are tyring to do
 def longest_common_string_recursive_helper(str1, str2, pos1, pos2, check_equal):
@@ -80,3 +81,23 @@ def longest_common_substring_recursive(str1, str2):
 
 
 #print longest_common_substring_recursive('banannaorangekiwi', 'appleorangepomengranate')
+
+#DP, matrix method
+def LCS3(s1,s2):
+    row = len(s1) + 1 
+    col = len(s2) + 1
+    maxLength = 0
+    T = [ [ 0 for _ in range(col)] for _ in range(row)  ]
+
+    for i in (range(1,row)):
+        for j in range( 1,col):
+            if s1[i-1] == s2[j-1]:
+                T[i][j] = 1 + T[i-1][j-1]
+                maxLength = max(maxLength, T[i][j])
+                index = i
+
+    subString = s1[:index][-maxLength:]
+    return subString
+
+print 
+print LCS3('banannaorangekiwi', 'appleorangepomengranate')
