@@ -94,10 +94,14 @@ def LCS3(s1,s2):
             if s1[i-1] == s2[j-1]:
                 T[i][j] = 1 + T[i-1][j-1]
                 maxLength = max(maxLength, T[i][j])
-                index = i
 
+    for i, row in enumerate(T):
+        for value in row:
+            if value == maxLength:
+                index = i
+                break
     subString = s1[:index][-maxLength:]
     return subString
 
 print 
-print LCS3('banannaorangekiwi', 'appleorangepomengranate')
+print LCS3('banannaorangekiwip', 'appleorangepomengranate')
