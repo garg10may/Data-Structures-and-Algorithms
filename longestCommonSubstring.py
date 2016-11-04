@@ -8,13 +8,13 @@ def LCS(s1, s2, d = {}):
     global numCalls
     numCalls +=1
     try:
-        return d[(s1,s2)]
+        return d[s1]
     except:
-        if s2.find(s1) != -1:
-            d[(s1,s2)] = s1
+        if s2.find(s1) != -1: #substring present
+            d[s1] = s1
             return s1
         if s1 == '':
-            d[(s1,s2)] = ''
+            d[s1] = ''
             return ''
         result1 = LCS(s1[1:], s2, d)
         result2 = LCS(s1[:-1], s2, d)
@@ -51,6 +51,7 @@ print numCalls
 numCalls = 0
 print LCS2('appleorangepomengranate','banannaorangekiwi')
 print numCalls
+print LCS2('c','ab')
 
 
 #highly inefficient, found on some website, my computer not able to run it
