@@ -3,7 +3,10 @@
 # abcd 1ab1c1 --> ab 
 
 #recursion with dp
+#Comlexity 2^len(s1)
 def LCS(s1, s2, d = {}):
+    global numCalls
+    numCalls +=1
     try:
         return d[(s1,s2)]
     except:
@@ -13,17 +16,21 @@ def LCS(s1, s2, d = {}):
         if s1 == '':
             d[(s1,s2)] = ''
             return ''
-        result1 = LCS(s1[1:], s2)
-        result2 = LCS(s1[:-1], s2)
+        result1 = LCS(s1[1:], s2, d)
+        result2 = LCS(s1[:-1], s2, d)
         if len(result1) > len(result2):
             return result1
         else:
             return result2
-
+numCalls = 0
 print LCS('banannaorangekiwi', 'appleorangepomengranate')
+print numCalls
 
 #recursion 
+#Complexity 2^len(s1 or s2, whichever is lower)
 def LCS2(s1, s2):
+    global numCalls
+    numCalls += 1
     if len(s1) > len(s2):
         s1,s2 = s2,s1 #to increase efficency, complexity is dependant on the length of S1
     if s2.find(s1) != -1: #string is there
@@ -37,9 +44,13 @@ def LCS2(s1, s2):
     else:
         return result2
 
+numCalls = 0
 print LCS2('banannaorangekiwi', 'appleorangepomengranate')
+print numCalls
 #try this without the len(s1) > len(s2) condition, it should take few secs
+numCalls = 0
 print LCS2('appleorangepomengranate','banannaorangekiwi')
+print numCalls
 
 
 #highly inefficient, found on some website, my computer not able to run it
