@@ -82,13 +82,12 @@ def LCS3( s1, s2):
 T =  LCS3('tanmayorandaabcdef', "anmabannbcorangej")
 print T[-1][-1]
 
+#this is still wrong, will solve for later
 def constructSequence(T, s1):
     result=''
     i = len(T) -1 #row
     j = len(T[0]) -1 #col
-    print i, j
-    while i >= 0 and j >= 0:
-        print i, j        
+    while i >= 0 and j >= 0:       
         if T[i][j] == T[i-1][j-1] +1:
             result += s1[i]
         i -= 1
