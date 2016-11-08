@@ -1,46 +1,6 @@
-#Given two strings find the longest common subsequence between them, the sequence should be continuous
+#Given two strings find the longest common subsequence between them
 # abcd 1abcd1 --> abcd
-# abcd 1ab1c1 --> ab 
-
-
-#recursion with dp
-def LCS(s1, s2, d = {}):
-    try:
-        return d[(s1,s2)]
-    except:
-        if s2.find(s1) != -1:
-            d[(s1,s2)] = s1
-            return s1
-        if s1 == '':
-            d[(s1,s2)] = ''
-            return ''
-        result1 = LCS(s1[1:], s2)
-        result2 = LCS(s1[:-1], s2)
-        if len(result1) > len(result2):
-            return result1
-        else:
-            return result2
-
-print LCS('tanmayanganaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
-
-#recursion 
-def LCS(s1, s2):
-    if s2.find(s1) != -1:
-        return s1
-    if s1 == '':
-        return ''
-    result1 = LCS(s1[1:], s2)
-    result2 = LCS(s1[:-1], s2)
-    if len(result1) > len(result2):
-        return result1
-    else:
-        return result2
-
-print LCS('tanmayorandaabcdef', "elepltanmabananaakjlkjkojhanbcorangejant")
-
-#The problem remains same, now the sequence 
-# Need not be continuous
-# abcd 1ab1c1 --> abc
+# abcd 1ab1c1 --> ab c
 
 
 # this is still wrong
@@ -62,13 +22,13 @@ def LCS2(s1, s2):
     return largest
 
 
-print LCS2('tanmayorandaabcdef', "anmabannbcorangej")
+print LCS2('appleorangekiwi', 'plumorangetomato')
 
 #DP solution, also need to find out the sequence
 #this is wrong
 def LCS3( s1, s2):
-    row = len(s1)
-    col = len(s2)
+    row = len(s1) + 1
+    col = len(s2) + 1
     T = [ [ 0 for _ in range(col)] for _ in range(row)  ]
     for i in (range(1,row)):
         for j in range( 1,col):
@@ -79,7 +39,7 @@ def LCS3( s1, s2):
                                T[i][j-1] )
     return T
 
-T =  LCS3('tanmayorandaabcdef', "anmabannbcorangej")
+T =  LCS3('appleorangekiwi', 'plumorangetomato')
 print T[-1][-1]
 
 #this is still wrong, will solve for later
