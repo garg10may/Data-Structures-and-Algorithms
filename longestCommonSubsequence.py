@@ -1,6 +1,6 @@
 #Given two strings find the longest common subsequence between them
 # abcd 1abcd1 --> abcd
-# abcd 1ab1c1 --> ab c
+# abcd 1ab1c1 --> abc
 
 
 # this is still wrong
