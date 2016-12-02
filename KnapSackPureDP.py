@@ -110,8 +110,9 @@ def findElements(T, items):
 
 items= findElements( matrix, sample1)
 print [ i.name for i in items]
+print 
 
-
+#included the code in the same program to get the elements also 
 def pureDynamicKS2(items, maxWeight):
 
     def bestvalue(i, j, d={}):
