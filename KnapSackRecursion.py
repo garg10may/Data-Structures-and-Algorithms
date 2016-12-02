@@ -41,4 +41,4 @@ def maxVal(toConsider, avail):
 
 numCalls =0
 print maxVal(itemsList,400)
-print numCalls
+print 'No. of Calls %s'%(numCalls)
