@@ -23,7 +23,7 @@ def LCS(s1, s2, d = {}):
         else:
             return result2
 numCalls = 0
-print LCS('banannaorangekiwi', 'appleorangepomengranate')
+print LCS('banannaorangekiwiapple', 'appleorangepomengranate')
 print 'Number of calls %s'%(numCalls)
 
 #recursion 
@@ -46,12 +46,12 @@ def LCS2(s1, s2):
 
 numCalls = 0
 print
-print LCS2('banannaorangekiwi', 'appleorangepomengranate')
+print LCS2('banannaorangekiwiapple', 'appleorangepomengranate')
 print 'Number of calls %s'%(numCalls)
 #try this without the len(s1) > len(s2) condition, it should take few secs
 numCalls = 0
 print
-print LCS2('appleorangepomengranate','banannaorangekiwi')
+print LCS2('appleorangepomengranateExtraLengthAddedButSameNoOfCalls','banannaorangekiwiapple')
 print 'Number of calls %s'%(numCalls)
 
 #recursion
@@ -82,7 +82,7 @@ def longest_common_substring_recursive(str1, str2):
 
 #print longest_common_substring_recursive('banannaorangekiwi', 'appleorangepomengranate')
 
-#DP, matrix method
+#DP, matrix method, O(s1 * s2)
 def LCS3(s1,s2):
     row = len(s1) + 1 
     col = len(s2) + 1
