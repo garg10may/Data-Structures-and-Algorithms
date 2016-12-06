@@ -9,7 +9,7 @@ def printPath(path):
             result = result + '->'
     return result
 
-#DFS1 --> To find the shortest path between 2 nodes, there's no concept of shortest without end
+#DFS1 --> To find the shortest path between 2 nodes, there would be no concept of shortest without end node.
 #DFS2 --> To find the longest path of all paths. 
 #Essentially one has to understand how the recursive nature is working, different comparisons can always be made
 def DFS1(graph, start, end, path=[], shortest=None):
