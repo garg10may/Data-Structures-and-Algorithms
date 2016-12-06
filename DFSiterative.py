@@ -11,6 +11,8 @@ def printPath(path):
 
 
 #it's same as BFS, just we pop from the end and keep on adding, but we would have to check for shortest from all iterations. It's DFS right right
+#so BFS is best for finding shortest, since iterations are not wasted
+#Also DFS have benefit of less memory requirement, but here you are giving it up also. So twice bad. 
 def DFS(graph, start, end, shortest):
     """Assumes graph is a digraph; start and end are nodes;
        path and shortest are lists of nodes
@@ -19,7 +21,7 @@ def DFS(graph, start, end, shortest):
     pathQueue = [initPath]
     while len(pathQueue) !=0:
         tmpPath = pathQueue.pop()
-        print ('Current BFS path:', printPath(tmpPath))
+        print ('Current DFS path:', printPath(tmpPath))
         lastNode = tmpPath[-1]
         if lastNode == end:
             if shortest == None or len(tmpPath) < len(shortest):
