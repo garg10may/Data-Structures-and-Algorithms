@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Given a value N, if we want to make change for N cents,
 and we have infinite supply of each of S = { S1, S2, .. , Sm} valued coins,
@@ -29,7 +30,7 @@ def count( coins, coinsLeft, amount):
 
 
     # Driver program to test above function
-arr = [1, 2, 3]
+arr = [1, 2, 3,4,5,6,7,8,9]
 m = len(arr)
 amount = 10
 print(count(arr, len(arr), amount))
