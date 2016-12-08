@@ -1,3 +1,6 @@
+# Find the minimum number of coins needed to furnish change for a given amount. 
+# The amount of respective changes are infinite. 
+# For example [25,5,1,10,21],63 would need only 3, 21 coins.
 
 def recMC(coinValueList,change,d):
      global coins
