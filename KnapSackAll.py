@@ -101,7 +101,7 @@ def buildItems(sample):
 
 sample1 = buildItems(sampleList)
 #print bruteForceKS(sample1,400)
-#print greedyKS(sample1, 400)
+print greedyKS(sample1, 400)
 
 def totalValue(items):
     try:
@@ -158,7 +158,7 @@ def maxVal(toConsider, avail, memo={}):
         memo[(len(toConsider), avail)] = result
     return result
 
-#alue, selected = maxVal(sample1, 400)
+#value, selected = maxVal(sample1, 400)
 #print value, map(lambda x: x.getName(), selected)
 
 
@@ -185,7 +185,7 @@ def pureDynamicKS(items, maxWeight):
                              )
     return T[rows-1][cols-1]
 
-#print pureDynamicKS(sample1, 400)
+print pureDynamicKS(sample1, 400)
 
 
 def pureDynamicKS2(items, maxWeight):
