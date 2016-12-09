@@ -9,6 +9,8 @@ For N = 10 and S = {2, 5, 3, 6}, there are five solutions:
 {2,2,2,2,2}, {2,2,3,3}, {2,2,6}, {2,3,5} and {5,5}. So the output should be 5.
 '''
 
+#This code I found on some website, though not very intuitive as I would approach a 
+#include and not include problem, there's extra varaiable to keep track of coinsLeft
 def count( coins, coinsLeft, amount):
 
     # we have reached a recursive loop where whole amount has been exhausted, hence solution exists
@@ -29,10 +31,50 @@ def count( coins, coinsLeft, amount):
     return count( coins, coinsLeft-1, amount) + count( coins, coinsLeft, amount - coins[coinsLeft-1] )
 
 
-    # Driver program to test above function
 arr = [1, 2, 3,4,5,6,7,8,9]
 m = len(arr)
-amount = 10
-print(count(arr, len(arr), amount))
- 
-# This code is contributed by Bhavya Jain
+amount = 50
+
+#print count(arr, len(arr), amount)
+
+
+#Same as we approach a knapsack problem
+def count( coins, amount):
+
+    global numCalls
+    numCalls +=1
+
+    if amount == 0:
+        return 1 
+    if coins == [] or amount <0:
+        return 0
+    return count( coins, amount-coins[0]) + count( coins[1:], amount)
+
+global numCalls
+numCalls = 0
+print count(arr, amount)
+print 'No. of calls %s'%(numCalls)
+
+#using DP now
+def count(coins, amount, d={}):
+
+    global numCalls
+    numCalls += 1
+    try:
+        return d[(coins, amount)]
+    except:
+        if amount == 0:
+            return 1 
+        if coins == () or amount <0:
+            return 0
+
+        d[(coins, amount)] = count( coins, amount-coins[0]) + count( coins[1:], amount)
+        return d[(coins, amount)] 
+
+print 
+numCalls = 0
+print count(tuple(arr), amount)
+print 'No. of calls %s'%(numCalls)
+
+
+
