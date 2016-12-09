@@ -62,10 +62,13 @@ def testSP():
     g.addEdge(Edge(nodes[0], nodes[4]))
     g.addEdge(Edge(nodes[4], nodes[5]))
     g.addEdge(Edge(nodes[0], nodes[5]))
-    shortest = DFS1(g, nodes[0], nodes[5])
-    longest = DFS2(g, nodes[0])
 
+    shortest = DFS1(g, nodes[0], nodes[5])
+    print 
+    longest = DFS2(g, nodes[0])
+    print 
     print 'Shortest path found by DFS:', printPath(shortest)
+    print 
     print 'Longest path found by DFS:', printPath(longest)
 
 testSP()
