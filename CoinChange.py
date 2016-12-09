@@ -7,6 +7,7 @@ For example, for N = 4 and S = {1,2,3}, there are four solutions:
 {1,1,1,1},{1,1,2},{2,2},{1,3}. So output should be 4. 
 For N = 10 and S = {2, 5, 3, 6}, there are five solutions:
 {2,2,2,2,2}, {2,2,3,3}, {2,2,6}, {2,3,5} and {5,5}. So the output should be 5.
+This is same as finding partitions of a number, just now the arr would hold all the numbers upto that integer
 '''
 
 #This code I found on some website, though not very intuitive as I would approach a 
