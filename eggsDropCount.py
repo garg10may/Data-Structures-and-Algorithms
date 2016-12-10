@@ -44,7 +44,7 @@ def dropCount( eggs, floors, d = {}):
 		return (minDrop + 1)
 
 
-print dropCount( 5, 100) 
+print dropCount( 2, 100) 
 
 
 # Bottom up, DP, can calculate even for (2, 10000), not possible with top down DP 
@@ -53,33 +53,35 @@ def dropCount( eggs, floors):
 	rows = eggs
 	cols = floors
 
-	T = [ [ 0 for j in range(cols)] for i in range(rows)]
-
-	#fill first row
-	for j in range(cols):
-		T[0][j] = j
+	# always add zeroth row and col so that calculation is synchronized, otherwise confusion
+	T = [ [ 0 for j in range(cols+1)] for i in range(rows+1)]
 
 	#fill first col
-	for j in range(rows):
-		T[j][0] = 1
+	for j in range(1,cols+1):
+		T[1][j] = j 
 
-	for eggs in range(1,rows):
-		for floors in range(1,cols):
+	#fill first row 
+	for i in range(1,rows+1):
+		T[i][1] = 1 
+
+	for eggs in range(2, rows+1):
+		for floors in range(2, cols+1):
+
 
 			if ( eggs > floors ) :
 				T[eggs][floors] = T[eggs-1][floors]
 			else:
 				minCount = 999999999
 				for option in range(1, floors+1):
-					result = max( T[eggs-1][option-1] , T[eggs][floors-option] )
+					result =  1 + max( T[eggs-1][option-1] , T[eggs][floors-option] )
 					if result < minCount:
 						minCount = result
-				T[eggs][floors] = 1 + minCount
+				T[eggs][floors] = minCount
 
 	return T[eggs][floors]
 
 
-print dropCount( 5, 100)
+print dropCount( 2, 10000)
 
 
 
