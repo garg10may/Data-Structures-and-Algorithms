@@ -77,7 +77,8 @@ numCalls = 0
 print count(tuple(arr), amount)
 print 'No. of calls %s'%(numCalls)
 
-#using pure DP
+#using pure DP, very effective also able to calculate partitions for 10000. 
+# not possible with even with DP recursion
 def count( coins, amount):
 
     row = len(coins)
@@ -100,5 +101,4 @@ def count( coins, amount):
 print 
 arr = [1,2,3,4,5,6,7,8,9]
 amount = 50
-from pprint import pprint 
-pprint (count(arr, amount))
+print (count(arr, amount))
