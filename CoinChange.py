@@ -77,5 +77,28 @@ numCalls = 0
 print count(tuple(arr), amount)
 print 'No. of calls %s'%(numCalls)
 
+#using pure DP
+def count( coins, amount):
 
+    row = len(coins)
+    col = amount
 
+    T = [ [ 0 for j in range(col+1) ] for i in range(row) ]
+
+    #make first column as 1
+    for i in range(row):
+        T[i][0] = 1   
+
+    for i in range(row):
+        for j in range(1, col + 1):
+            if j >= coins[i]:
+                T[i][j] = T[i-1][j] + T[i][j - coins[i]]
+            else:
+                T[i][j] = T[i-1][j]
+    return T[i][j]
+
+print 
+arr = [1,2,3,4,5,6,7,8,9]
+amount = 50
+from pprint import pprint 
+pprint (count(arr, amount))
