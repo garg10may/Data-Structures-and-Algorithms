@@ -8,6 +8,38 @@ and LIS is {10, 22, 33, 50, 60, 80}.
 '''
 
 
+def LIS( array):
+
+	rows = len(array)
+	cols = len(array)
+
+	# also adding the zeroth row and col
+	T = [ [ 0 for j in range(cols+1) ] for i in range(rows+1) ]
+
+	#fill the first row
+	for i in range(cols):
+		T[1][i] = 1
+
+	#fill the first col
+	for j in range(rows):
+		T[j][1] = 1
+
+
+	for i in range(2, rows+1):
+		for j in range(2, cols+1):
+
+			
+
+
+
+
+
+
+
+
+
+
+'''
 # Below works for the given test case, but is still wrong. See the second output.
 # recursion can be funny. Will try bottom up. 
 def LIS(array):
@@ -42,3 +74,4 @@ def LIS(array):
 
 print LIS( [10, 22, 9, 33, 21, 50, 41, 60, 80] )
 print LIS( [2, 5, 3, 4] ) 
+'''
