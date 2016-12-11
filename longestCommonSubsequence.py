@@ -74,6 +74,12 @@ def longest_common_subsequence_recursive(sequence1, sequence2):
 
 print lcs_recursive_helper('tanmayorand', "anmabananaaan", 0, 0)
 
+
+
+'''
+Consider the input strings “ABCDGH” and “AEDFHR. Last characters do not match for the strings. So length of LCS can be written as:
+L(“ABCDGH”, “AEDFHR”) = MAX ( L(“ABCDG”, “AEDFHR”), L(“ABCDGH”, “AEDFH”) )
+'''
 def lcs(X, Y, m, n, d={}):
 
     try:
