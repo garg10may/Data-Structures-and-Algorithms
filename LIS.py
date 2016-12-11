@@ -8,8 +8,8 @@ and LIS is {10, 22, 33, 50, 60, 80}.
 '''
 
 
-#below is awfully wrong, I thought all combinations given take and not take option
-# and I would choose one with the max length
+# Below works for the given test case, but is still wrong. See the second output.
+# recursion can be funny. Will try bottom up. 
 def LIS(array):
 
 	if len(array) == 1 or len(array) == 0:
@@ -18,7 +18,7 @@ def LIS(array):
 	take = array[0]
 
 	resultTake = []
-	resultNotTake = []
+	resultAlter = []
 	resultFinal = []
 
 	withTake = LIS( array[1:] )
@@ -26,18 +26,19 @@ def LIS(array):
 	if take < withTake[0]:
 		resultTake = [take] + withTake
 	else:
-		resultTake = withTake
+		resultNotTake = withTake
+		resultAlter = [take]
 
-	withNotTake = LIS( array[1:])
+	if len(withTake) > 1 and take < withTake[1]:
+		resultAlter = [take] + withTake[1:]
 
-	resultNotTake = withNotTake
-
-	if len(resultTake) > len(resultNotTake):
+	if len(resultTake) > len(resultAlter):
 		resultFinal.extend(resultTake)
 	else:
-		resultFinal.extend(resultNotTake)
+		resultFinal.extend(resultAlter)
 
 	return resultFinal
 
 
-print LIS( [10,22,9,33])
+print LIS( [10, 22, 9, 33, 21, 50, 41, 60, 80] )
+print LIS( [2, 5, 3, 4] ) 
