@@ -73,3 +73,23 @@ def longest_common_subsequence_recursive(sequence1, sequence2):
 
 
 print lcs_recursive_helper('tanmayorand', "anmabananaaan", 0, 0)
+
+def lcs(X, Y, m, n, d={}):
+
+    try:
+        return d[(X,Y,m,n)]
+    except: 
+        if m == 0 or n == 0:
+           return 0;
+        elif X[m-1] == Y[n-1]:
+           result =  1 + lcs(X, Y, m-1, n-1, d);
+        else:
+           result =  max(lcs(X, Y, m, n-1, d ), lcs(X, Y, m-1, n, d));
+    d[(X,Y,m,n)] = result
+    return result
+     
+ 
+# Driver program to test the above function
+X = 'apple orange kiwi'
+Y = 'xxxx orange yyyyy'
+print "Length of LCS is ", lcs(X , Y, len(X), len(Y))
