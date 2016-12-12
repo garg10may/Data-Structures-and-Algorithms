@@ -5,13 +5,13 @@ that prints all occurrences of pat[] in txt[].
 You may assume that n > m.
 '''
 
-
+import hashlib
 # looks simple and good, but fails in second case, where it should continue
 # from if left off
 def find(s1, s2):
 	size = len(s1)
 	for i in range( len(s2) ):
-		if s2[i : i + size] == s1:
+		if hashlib.sha512(s2[i : i + size]).hexdigest() == haslib.sha512(s1).hexdigest():
 			print 'Pattern found at index %s'%(i)
 
 #find('AABA', "AABAACAADAABAAABAA")
