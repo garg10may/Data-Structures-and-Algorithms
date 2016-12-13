@@ -1,3 +1,4 @@
+#Rabin karp algorithm for string searching
 # remember '^' : is exclusive-or (bitwise) not power operator
 
 def hashValue(pattern, prime):
