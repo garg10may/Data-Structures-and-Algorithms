@@ -19,7 +19,7 @@ print
 #find('AAAAA', 'AAAAAAAAAAAAAAAAAAAA')
 print
 
-# This looks fine, worst case O(n)
+# This looks fine, worst case ~O(2nm) , (m(matching) + m(slicing)) * n
 def find(s1, s2):
 	size = len(s1)
 	index = 0 
