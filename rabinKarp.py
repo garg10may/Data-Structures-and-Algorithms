@@ -13,6 +13,7 @@ b*x^0 + c*x^1 + d*x^2, which is what we need. It's O(1) so very useful for long 
 Note:
 Here it's recommended to use high value of text characters, therefore use ASCII value for text not just 0,1,2
 Also use prime number greater than 100, so that the hash function is good and less collisions are there
+See for more information --> https://en.wikipedia.org/wiki/Rolling_hash
 '''
 
 def hashValue(pattern, prime):
