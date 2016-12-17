@@ -8,12 +8,11 @@ You may assume that n > m.
 # This looks fine, worst case ~O(2nm) , O((m+m) * (n-m+1))
 # m+m --> for slicing and comparision
 # n-m+1 --> number of times the loop will
-def find(s1, s2):
-	size = len(s1)
-	for i in range( len(s2) -size + 1 ):
-		if s2[i : i + size] == s1:
+def find(pat, txt):
+	size = len(pat)
+	for i in range( len(txt) -size + 1 ):
+		if txt[i : i + size] == pat:
 			print 'Pattern found at index %s'%(i)
-
 find("ABABCABAB" ,'ABABDABACDABABCABAB')
 
 
@@ -33,12 +32,25 @@ def search(pat, txt):
                 break
         if j == M-1 and status != 0: # if pat[0...M-1] = txt[i, i+1, ...i+M-1]
             print "Pattern found at index " + str(i)
-
-print 
 search("ABABCABAB" ,'ABABDABACDABABCABAB')
 
-testString = ''.join([ 'a' for _ in range(1000*100)] ) + 'b'
+
+def findAll(pat, txt):
+	i = txt.find(pat)
+	while i > -1:
+		print 'Pattern found at index %s'%(i)
+		i = txt.find(pat, i+1)
+findAll("ABABCABAB" ,'ABABDABACDABABCABAB')
+
+
+testString = ''.join([ 'a' for _ in range(1000*10000)] ) + 'b'
 testPattern = ''.join([ 'a' for _ in range(100*100) ])  + 'b'
 
-search(testPattern, testString)
-find(testPattern, testString)
+import cProfile
+
+# 'search' has worst time complexity among all three, since it's using native python code
+# while in 'find' during slicing and comparison, Python internally uses C, hence optimized
+# string.find is again optimized using 'Bayers Moore' hence the fastest
+cProfile.run('find(testPattern, testString)') # 15 seconds
+#cProfile.run('search(testPattern, testString)') # I left it for two hours, there was no result
+cProfile.run('findAll(testPattern, testString)') # 0.02 seconds
