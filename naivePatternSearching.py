@@ -7,7 +7,8 @@ You may assume that n > m.
 
 # This looks fine, worst case ~O(2nm) , O((m+m) * (n-m+1))
 # m+m --> for slicing and comparision
-# n-m+1 --> number of times the loop will
+# n-m+1 --> number of times the loop will execute,
+# but since these are internal method calls, python would optimize them 
 def find(pat, txt):
 	size = len(pat)
 	for i in range( len(txt) -size + 1 ):
