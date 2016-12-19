@@ -34,13 +34,6 @@ print
 getPermutation('abc')
 print 
 
-# to get a feel of how that splitting of character is working
-s = 'abcd'
-for i in range(len(s)):
-	print s[:i] ,  s[i + 1 : len(s)]
-
-
-
 # this will merge character at all positions for all strings in the stringList
 def mergeChar( char, stringList):
 	result = []
@@ -57,8 +50,8 @@ def all_permutations(string):
 		return [string]
 	return mergeChar( string[0], all_permutations(string[1:]) )
 
-print 
 print all_permutations('abc')
+print 
 
 
 
