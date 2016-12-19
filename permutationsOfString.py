@@ -19,13 +19,25 @@ def find_permutations( x ):
 
 	permute(a, 0, n-1)
 
+def getPermutation(s, prefix=''):
+        if len(s) == 0:
+                print prefix,
+        for i in range(len(s)):
+                getPermutation(s[0:i] + s[i + 1 : len(s)], prefix + s[i] )
 
 
 
-find_permutations('apple')
+find_permutations('abc')
 
+print
+print 
+getPermutation('abc')
 
-
+print 
+print
+s = 'abcd'
+for i in range(len(s)):
+	print s[0:i] + s[i + 1 : len(s)]
 
 
 
