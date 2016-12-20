@@ -1,11 +1,9 @@
 
-
+#binary search using recursion. 
 def binarySearch( numbers, number, index=0 ):
 	#prints the index of the number in the list of numbers
 
 	size = len(numbers)
-
-	print numbers
 
 	if size==2:
 		if number == numbers[0]:
@@ -38,4 +36,8 @@ def binarySearch( numbers, number, index=0 ):
 	return index
 
 
-print binarySearch( [10,40,60,73,80,90], 73)
+print binarySearch( [10,40,60,73,80,90], 90)
+
+
+
+
