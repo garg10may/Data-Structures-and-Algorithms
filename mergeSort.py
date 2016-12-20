@@ -1,3 +1,5 @@
+#Merge Sort 
+
 def insert( listOfElements, element):
 	#insert element in list in sorted order where list is already sorted
 	status = 0 
