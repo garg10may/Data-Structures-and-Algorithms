@@ -5,6 +5,8 @@ def binarySearch( numbers, number, index=0 ):
 
 	size = len(numbers)
 
+    #there is no need for base condition
+	'''
 	if size==2:
 		if number == numbers[0]:
 			return 0
@@ -18,25 +20,28 @@ def binarySearch( numbers, number, index=0 ):
 			return 0
 		else:
 			return -9999999
-
+	'''
 	if size % 2 == 0:
 		index = (size /2) - 1 
 	else:
 		index = (size/2)  
 
-	mid = numbers[index]
-	if mid == number:
-		return index
-	elif number > mid:
-		#right search
-		index += binarySearch( numbers[index+1:], number, index) + 1
-	else:
-		#left search
-		index = binarySearch( numbers[:index], number, index) 
-	return index
+
+	try:
+		mid = numbers[index]
+		if mid == number:
+			return index
+		elif number > mid:
+			#right search
+			return binarySearch( numbers[index+1:], number, index) + 1
+		else:
+			#left search
+			return  binarySearch( numbers[:index], number, index) 
+	except:
+		pass
 
 
-print binarySearch( [10,40,60,73,80,90], 90)
+print binarySearch( [5,10,20,30,40,60,73,80,90], 200)
 
 
 
