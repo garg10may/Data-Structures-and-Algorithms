@@ -1,47 +1,37 @@
 #Merge Sort 
 
-def insert( listOfElements, element):
-	#insert element in list in sorted order where list is already sorted
-	status = 0 
-	for i in range(len(listOfElements)):
-		if element < listOfElements[i] :
-			status = 1 
-			listOfElements.insert( i, element )
-			break
-	if status ==0:
-		listOfElements.append(element)
-	return listOfElements
-
+#this insert block though right, seems of bad complexity, you aren't using the fact 
+#that two lists are already sorted, you should use that to your advantage
 
 def merge( x, y):
 	# merge two arrays of sorted lists
-
 	result = []
-	#add the first element
-	if x[0] < y[0]:
-		result.extend( [ x[0], y[0] ] )
-	else:
-		result.extend( [ y[0], x[0] ] )
+	i, j = 0,0
 
-	for i in range(1, max(len(x), len(y))):
-		try:
-			result = insert( result, x[i] ) 
-		except:
-			pass
-		try:
-			result = insert( result, y[i] ) 
-		except:
-			pass
+	while  i < len(x) and j < len(y):
+		if x[i] < y[j]:
+			result.append(x[i])
+			i +=1
+		else:
+			result.append(y[j])
+			j+=1
+
+	#any of the x or y maybe left, so be need to append as it is
+	if i == (len(x)): #i.e. first list was exhausted
+		result.extend( y[j:]) #append second list
+	else:
+		result.extend( x[i:]) #append first
+
 	return result
 
-
 def mergeSort( x ):
-	if len(x) == 1:
-		return x
+
 	n = len(x)
+	if n == 1:	return x
+
 	return ( merge ( mergeSort( x[ : n/2 ] ),  mergeSort( x[ n/2 :  ]) ) )
 
-print mergeSort( [38, 27, 43, 3, 9, 82, 10])
+print mergeSort( [38, 27, 43, 3, 9, 82, 10]) 
 
 
 
