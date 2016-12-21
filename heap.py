@@ -1,4 +1,10 @@
-
+#Building a heap
+	# O(n) calls to maxHeapify
+	# each of which takes O(lg n)
+	# Complexity: O(nlogn)
+	# ok so on perfunctory analysis it looks O(nlogn) but it's O(n) only, you would have to do math, 
+	# since not each of the nodes are going logn level. You just have to remember it's O(n)
+	#http://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity
 
 # O(logn), since the height of heap is logn, at max logn calls can take place
 # our aim is to look at one (parent, children) and make the max of them as parent
@@ -22,15 +28,10 @@ def maxHeapify( arr, i=0):
 		maxHeapify( arr, largest)
 
 def buildMaxHeap( arr):
-
-	#calling each element once and then recursively buidling that binary tree
-	# nlogn --> n for number of calls, logn for each call
 	for i in reversed(range(len(arr)/2)):
 		maxHeapify( arr, i)
-		print arr
 	return arr
 
 
 a = [ 3,5,1,2,6,8 ]
 print buildMaxHeap(a)
-
