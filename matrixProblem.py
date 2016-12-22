@@ -1,12 +1,7 @@
-
-
 # one of the easiest problem on dynamic programming
-
 
 #bottom up
 def numberOfPaths( m, n, d={} ):
-
-
 	try:
 		return d[(m,n)]
 	except:			
