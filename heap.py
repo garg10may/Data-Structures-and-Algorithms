@@ -27,11 +27,14 @@ def maxHeapify( arr, i=0):
 
 		maxHeapify( arr, largest)
 
+	return arr 
+
 def buildMaxHeap( arr):
 	for i in reversed(range(len(arr)/2)):
-		maxHeapify( arr, i)
+		arr = maxHeapify( arr, i)
 	return arr
 
 
-a = [ 3,5,1,2,6,8 ]
-print buildMaxHeap(a)
+if __name__ == '__main__':
+	a = [ 3,5,1,2,6,8 ]
+	print buildMaxHeap(a)
