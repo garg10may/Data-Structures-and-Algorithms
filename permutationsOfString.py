@@ -17,6 +17,8 @@ def find_permutations( x ):
 				a[l], a[i] = a[i], a[l]
 	permute(a, 0, n-1)
 
+find_permutations('abc')
+print
 
 #we take each character one by one, and then find all the permutations of remaining
 # the trick is in s[:i] + s[i+1]:len(s)], this removes the ith character in each iteration
@@ -27,9 +29,6 @@ def getPermutation(s, prefix=''):
                 print prefix
         for i in range(len(s)):
                 getPermutation(s[0:i] + s[i + 1 : len(s)], prefix + s[i] )
-
-find_permutations('abc')
-print
  
 getPermutation('abc')
 print 
