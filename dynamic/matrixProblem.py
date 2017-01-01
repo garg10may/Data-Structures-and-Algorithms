@@ -1,5 +1,10 @@
 # one of the easiest problem on dynamic programming
 
+'''
+Find the number of unique paths in a matrix, given that you can 
+only move down or right
+'''
+
 #bottom up
 def numberOfPaths( m, n, d={} ):
 	try:

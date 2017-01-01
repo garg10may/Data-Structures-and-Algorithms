@@ -2,8 +2,8 @@
 # remember '^' : is exclusive-or (bitwise) not power operator in python
 
 '''
-The algorithm for rolling hash user here is as below. Pattern : 'abc', Text : 'abcd'
-Consider 'abc' it's hash value is calcualted using formula a*x^0 + b*x^1 + c*x^2, where x is prime
+The algorithm for rolling hash used here is as below. Pattern : 'abc', Text : 'abcd'
+Consider 'abc' its hash value is calcualted using formula a*x^0 + b*x^1 + c*x^2, where x is prime
 Now when we need to roll( i.e. find hash of 'bcd'), which should be b*x^0 + c*x^1 + d*x^2, 
 instead of calculating it whole , we just subract first character value and add next character value. 
 Value of first character would be a*X^0 --> a, so we subract a and divide by prime so that new position becomes

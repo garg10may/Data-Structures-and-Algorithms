@@ -1,3 +1,5 @@
+#Knapscak problem using bottom up approach of Dynamic Programming
+
 #item, weight, value
 sampleList = (
     ("map", 9, 150), ("compass", 13, 35), ("water", 153, 200), ("sandwich", 50, 160),

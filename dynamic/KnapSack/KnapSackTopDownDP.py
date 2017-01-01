@@ -21,6 +21,7 @@ def getValue(item):
     return value
 
 #using recusion and dynamic programming, a very significant improvement due to D.P.
+#also known as Top down
 
 def maxVal(toConsider, avail, memo={}):
     global numCalls
