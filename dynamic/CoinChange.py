@@ -69,6 +69,7 @@ def count(coins, amount, d={}):
         if coins == () or amount <0:
             return 0
 
+        #this line is most important to understand, Total = take a coin + not take a coin
         d[(coins, amount)] = count( coins, amount-coins[0]) + count( coins[1:], amount)
         return d[(coins, amount)] 
 
