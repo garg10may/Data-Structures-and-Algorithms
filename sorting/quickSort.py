@@ -21,7 +21,7 @@ def quickSort( x):
 	for  currentElement in range(pivot):
 
 		if x[currentElement] <= x[pivot]: 
-			#swap to make it left of the wall
+			#swap it with the first element right of the wall
 			x[currentElement], x[wall] = x[wall], x[currentElement]
 			#now move the wall one ahead
 			wall += 1
