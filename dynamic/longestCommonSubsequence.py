@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
+
 #Given two strings find the longest common subsequence between them
 # abcd 1abcd1 --> abcd
 # abcd 1ab1c1 --> abc
-
 
 # this is still wrong
 def LCS2(s1, s2):
@@ -39,7 +40,9 @@ def LCS3( s1, s2):
                                T[i][j-1] )
     return T
 
-T =  LCS3('appleorangekiwi', 'plumorangetomato')
+T =  LCS3('appleorangekiwibanan', 'xxxxorangekiwixxxx')
+print
+print 'Using bottom up'
 print T[-1][-1]
 
 #this is still wrong, will solve for later
@@ -48,13 +51,18 @@ def constructSequence(T, s1):
     i = len(T) -1 #row
     j = len(T[0]) -1 #col
     while i >= 0 and j >= 0:       
-        if T[i][j] == T[i-1][j-1] +1:
+        if T[i][j] == T[i][j-1] +1: #from above
             result += s1[i]
-        i -= 1
-        j -= 1
+            i -= 1
+            j -= s1[i] + 1
+        elif T[i][j] == T[i][j-1]:
+            i -= 1
+            j = j
+    print result
     return result[::-1]
 
-print constructSequence(T, 'tanmayorandaabcdef')
+print constructSequence(T, 'appleorangekiwibanan' )
+print
 
 #recursive solution for the same, highly inefficent
 def lcs_recursive_helper(sequence1, sequence2, index1, index2):
@@ -75,27 +83,28 @@ def longest_common_subsequence_recursive(sequence1, sequence2):
 print lcs_recursive_helper('tanmayorand', "anmabananaaan", 0, 0)
 
 
+#These should be memorized, once muscle memory is there, it can solve complex
+def LCS(s1,s2, d = {}):
 
-'''
-Consider the input strings “ABCDGH” and “AEDFHR. Last characters do not match for the strings. So length of LCS can be written as:
-L(“ABCDGH”, “AEDFHR”) = MAX ( L(“ABCDG”, “AEDFHR”), L(“ABCDGH”, “AEDFH”) )
-'''
-def lcs(X, Y, m, n, d={}):
+    print s1, s2
 
     try:
-        return d[(X,Y,m,n)]
-    except: 
-        if m == 0 or n == 0:
-           return 0;
-        elif X[m-1] == Y[n-1]:
-           result =  1 + lcs(X, Y, m-1, n-1, d);
+        return d[(s1,s2)]
+
+    except:
+
+        if len(s1)==0 or len(s2)==0:
+            return 0
+
+        # if last characters match
+        if s1[-1] == s2[-1]:
+            return 1 + LCS( s1[:-1], s2[:-1])
+
         else:
-           result =  max(lcs(X, Y, m, n-1, d ), lcs(X, Y, m-1, n, d));
-    d[(X,Y,m,n)] = result
-    return result
-     
- 
-# Driver program to test the above function
-X = 'apple orange kiwi'
-Y = 'xxxx orange yyyyy'
-print "Length of LCS is ", lcs(X , Y, len(X), len(Y))
+            # if don't match, two options, which would cover all scenario
+            d[(s1,s2)] = max( LCS( s1[:-1], s2), LCS( s1, s2[:-1]))
+            return d[(s1,s2)]
+
+
+#two options take last from s1 not s2 and 
+print LCS( 'xxxxxapplexxxxxxxx', '000000apple00000')
