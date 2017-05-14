@@ -25,6 +25,10 @@ print dropCount( 2, 10)
 
 
 #Without DP just for floors=100 no result was there even in 10 mins, with DP blink 0.1 secs.
+#I calculate min drops required for each floor from 1 to 100 and then return the min of that. 
+#Now for each floor I have two options --> egg breaks and I need to check for all fllor beneath
+#--> egg doesn't break, and I need to check for all floor above
+# I take the max of the two options, to account for the worst case. 
 def dropCount( eggs, floors, d = {}):
 
 	try:
@@ -81,12 +85,32 @@ def dropCount( eggs, floors):
 	return T[eggs][floors]
 
 
-print dropCount( 2, 10000)
+print dropCount( 2, 100)
 
 
 
+def f(floors, eggs):
+
+	if floors == 1 or eggs == 1 or floors == 0 or eggs ==0:
+		return floors
 
 
+	result = []
+	#check for each floor
+	for i in range(1, floors+1):
+		#1st case, egg breaks, floors left = i-1
+		a = 1 + f( i-1, eggs -1 )
+		#2nd case, egg doesn't break, floors left = floors - i
+		b = 1 + f( floors - i, eggs)
+		#take worst of two
+		result.append( max(a,b))
+
+
+	return min(result) 
+
+
+
+print f(10, 2)
 
 
 
