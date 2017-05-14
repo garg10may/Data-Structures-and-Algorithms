@@ -50,3 +50,18 @@ print maxVal(itemsList,400)
 print 'No. of calls %s'%(numCalls)
 
 
+def knapSack(W, wt, v, n=0):
+
+    if n>=len(v) or W==0:
+        return 0
+
+    if wt[n] > W:
+        return knapSack(W, wt, v, n+1)
+    else:
+        return max( v[n] + knapSack(W-wt[n], wt, v, n+1),
+                             knapSack(W, wt, v, n+1))
+
+
+wt = [ i[1] for i in itemsList]
+v = [ i[2] for i in itemsList]
+print knapSack(400, wt, v)
