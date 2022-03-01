@@ -18,7 +18,7 @@ def lps( pattern):
 			j += 1
 	return lps
 
-print lps('AABAACAABAA')
+print (lps('AABAACAABAA'))
 
 
 

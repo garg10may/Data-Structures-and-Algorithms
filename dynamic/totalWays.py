@@ -19,8 +19,8 @@ def totalSteps(n, d= {}):
 			return d[n]
 
 count = 0
-print totalSteps(10)
-print 'No. of calls %s'%(count)
+print (totalSteps(10))
+print ('No. of calls %s'%(count))
 
 def totalSteps(n):
 
@@ -39,5 +39,21 @@ def totalSteps(n):
 	return d[n]
 
 count  =0
-print totalSteps(10)
-print 'No. of calls %s'%(count)
+print (totalSteps(10))
+print ('No. of calls %s'%(count))
+
+#no idea what you are doing in the above solutions
+#2nd March 2022, it's clearly a 0/1 knapsack problem
+
+def totalSteps3(coins, amount):
+	if amount == 0:
+		return 1
+	if coins == [] or amount <0:
+		return 0
+	#take one + not take one i.e 0/1 knapsack
+	return totalSteps3(coins, amount- coins[0]) + totalSteps3( coins[1:], amount)
+
+print (totalSteps3([1,2,3], 10))
+# lol, output is 14 which is incorrect, I think it's due the fact that person is drunk and 
+# can come back also
+

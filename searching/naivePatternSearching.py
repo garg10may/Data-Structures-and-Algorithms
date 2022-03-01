@@ -13,7 +13,7 @@ def find(pat, txt):
 	size = len(pat)
 	for i in range( len(txt) -size + 1 ):
 		if txt[i : i + size] == pat:
-			print 'Pattern found at index %s'%(i)
+			print ('Pattern found at index %s'%(i))
 find("ABABCABAB" ,'ABABDABACDABABCABAB')
 
 
@@ -22,24 +22,23 @@ find("ABABCABAB" ,'ABABDABACDABABCABAB')
 def search(pat, txt):
     M = len(pat)
     N = len(txt)
- 
+
     # A loop to slide pat[] one by one
     for i in xrange(N-M+1):
-
-    	status = 1 
-        for j in xrange(M):
-            if txt[i+j] != pat[j]:
-            	status = 0
-                break
+			status = 1 
+      for j in xrange(M):
+        if txt[i+j] != pat[j]:
+					status = 0
+          break
         if j == M-1 and status != 0: # if pat[0...M-1] = txt[i, i+1, ...i+M-1]
-            print "Pattern found at index " + str(i)
+            print ("Pattern found at index " + str(i))
 search("ABABCABAB" ,'ABABDABACDABABCABAB')
 
 
 def findAll(pat, txt):
 	i = txt.find(pat)
 	while i > -1:
-		print 'Pattern found at index %s'%(i)
+		print ('Pattern found at index %s'%(i))
 		i = txt.find(pat, i+1)
 findAll("ABABCABAB" ,'ABABDABACDABABCABAB')
 

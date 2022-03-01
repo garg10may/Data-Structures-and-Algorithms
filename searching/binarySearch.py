@@ -41,7 +41,7 @@ def binarySearch( numbers, number, index=0 ):
 		pass
 
 
-print binarySearch( [5,10,20,30,40,60,73,80,90], 20)
+print (binarySearch( [5,10,20,30,40,60,73,80,90], 20))
 
 
 
