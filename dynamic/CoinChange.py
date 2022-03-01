@@ -32,7 +32,7 @@ def count( coins, coinsLeft, amount):
     return count( coins, coinsLeft-1, amount) + count( coins, coinsLeft, amount - coins[coinsLeft-1] )
 
 
-arr = [1, 2, 3,4,5,6,7,8,9]
+arr = [2, 4,7]
 m = len(arr)
 amount = 50
 
@@ -78,10 +78,16 @@ numCalls = 0
 print (count(tuple(arr), amount))
 print ('No. of calls %s'%(numCalls))
 
-#using pure DP, very effective also able to calculate partitions for 10000. 
+#using pure DP, this is also knowns as bottom up since we are calculating starting for 0,1,2 and reaching higher values
+# very effective also able to calculate partitions for 10000. 
 # not possible with even with DP recursion
 # After 5 year I have no idea why this code is doing, found the below video
 # https://www.youtube.com/watch?v=_fgjrs570YE&list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr&index=16
+# after thinking about it for a while got it, so always note down, it's no use if you forget
+# Bottom up DP requires you to see how the recursion was precisely building the complete solution i.e. what kind of 
+# subproblems were being created and how they filled the base case hence it's somewhat difficult to write bottom up DP. 
+# In Top down you have to write a backtrack solution (which is still hard) and see the state of backtrack solution. 
+# Time complexities wise bottom up DP is better since in Top down it requires function calls and therefore implicit stack formation. 
 def count( coins, amount):
 
     row = len(coins)
@@ -102,6 +108,6 @@ def count( coins, amount):
     return T[i][j]
 
 print 
-arr = [1,2,3,4,5,6,7,8,9]
+arr = [2,4,7]
 amount = 50
 print (count(arr, amount))

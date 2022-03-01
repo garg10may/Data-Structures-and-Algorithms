@@ -58,3 +58,15 @@ def all_permutations(string):
 
 
 print(all_permutations("abc"))
+
+#generate by github co pilot
+def permutations(string):
+		if len(string) == 1:
+				return [string]
+		result = []
+		for i in range(len(string)):
+				for j in permutations(string[:i] + string[i + 1 : len(string)]):
+						result.append(string[i] + j)
+		return result
+
+print(permutations("abcd"))
