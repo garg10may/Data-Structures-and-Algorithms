@@ -15,7 +15,7 @@ def numberOfPaths( m, n, d={} ):
 		d[(m,n)] =  numberOfPaths( m-1, n) + numberOfPaths( m, n-1)
 		return d[ (m,n) ]
 
-print numberOfPaths( 3, 3)
+print numberOfPaths( 50, 50)
 
 
 #top down
@@ -36,4 +36,4 @@ def numberOfPaths( m, n ):
 
 	return  T[n-1][m-1]
 
-print numberOfPaths(3,3)
+print numberOfPaths(50,50)

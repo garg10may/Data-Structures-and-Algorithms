@@ -74,7 +74,7 @@ class Tree(object):
             self._preOrder(node.left)
             self._preOrder(node.right)
 
-        def _height(self, node):
+    def _height(self, node):
 
         if node == None:
             return 0

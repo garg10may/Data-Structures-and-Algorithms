@@ -94,7 +94,6 @@ def f(floors, eggs):
 	if floors == 1 or eggs == 1 or floors == 0 or eggs ==0:
 		return floors
 
-
 	result = []
 	#check for each floor
 	for i in range(1, floors+1):

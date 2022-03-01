@@ -53,8 +53,8 @@ def count( coins, amount):
 
 global numCalls
 numCalls = 0
-print count(arr, amount)
-print 'No. of calls %s'%(numCalls)
+print (count(arr, amount))
+print ('No. of calls %s'%(numCalls))
 
 #using DP now
 def count(coins, amount, d={}):
@@ -73,10 +73,10 @@ def count(coins, amount, d={}):
         d[(coins, amount)] = count( coins, amount-coins[0]) + count( coins[1:], amount)
         return d[(coins, amount)] 
 
-print 
+print (" ")
 numCalls = 0
-print count(tuple(arr), amount)
-print 'No. of calls %s'%(numCalls)
+print (count(tuple(arr), amount))
+print ('No. of calls %s'%(numCalls))
 
 #using pure DP, very effective also able to calculate partitions for 10000. 
 # not possible with even with DP recursion
@@ -99,7 +99,7 @@ def count( coins, amount):
                 T[i][j] = T[i-1][j]
     return T[i][j]
 
-print 
+print ("  ")
 arr = [1,2,3,4,5,6,7,8,9]
 amount = 50
 print (count(arr, amount))

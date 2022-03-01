@@ -9,4 +9,4 @@ def towerOfHanoi(height, start, temp, target):
     return count
 
 
-print towerOfHanoi(4,"A","B","C")
+print towerOfHanoi(10,"A","B","C")

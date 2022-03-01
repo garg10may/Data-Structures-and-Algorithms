@@ -1,6 +1,6 @@
 
 
-print '_'*120
+print ('_'*120)
 def pascalRow(previousRow):
     row = [1]
     for i in range(len(previousRow)-1):
@@ -21,11 +21,11 @@ def format(n):
     count =0
     traingle = pascalTriange(n)
     for count, row in enumerate(traingle):
-        print ' '*(n-count),
+        print (' '*(n-count),)
         for i in row:
-            print i,
+            print (i,)
         print
 
-print pascalRow([1,2,1])
-print pascalTriange(5)
+print (pascalRow([1,2,1]))
+print (pascalTriange(5))
 format(5)

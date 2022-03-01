@@ -86,8 +86,6 @@ print lcs_recursive_helper('tanmayorand', "anmabananaaan", 0, 0)
 #These should be memorized, once muscle memory is there, it can solve complex
 def LCS(s1,s2, d = {}):
 
-    print s1, s2
-
     try:
         return d[(s1,s2)]
 
@@ -98,7 +96,8 @@ def LCS(s1,s2, d = {}):
 
         # if last characters match
         if s1[-1] == s2[-1]:
-            return 1 + LCS( s1[:-1], s2[:-1])
+            d[(s1,s2)] = LCS( s1[:-1], s2[:-1])
+            return 1 + d[(s1,s2)]
 
         else:
             # if don't match, two options, which would cover all scenario
@@ -107,4 +106,4 @@ def LCS(s1,s2, d = {}):
 
 
 #two options take last from s1 not s2 and 
-print LCS( 'xxxxxapplexxxxxxxx', '000000apple00000')
+print LCS( 'appleorangekiwibanan', 'xxxxorangekiwixxxx')
