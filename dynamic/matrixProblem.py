@@ -5,7 +5,7 @@ Find the number of unique paths in a matrix, given that you can
 only move down or right
 '''
 
-#bottom up
+#Top down
 def numberOfPaths( m, n, d={} ):
 	try:
 		return d[(m,n)]
@@ -15,10 +15,10 @@ def numberOfPaths( m, n, d={} ):
 		d[(m,n)] =  numberOfPaths( m-1, n) + numberOfPaths( m, n-1)
 		return d[ (m,n) ]
 
-print numberOfPaths( 50, 50)
+print (numberOfPaths( 10, 10))
 
 
-#top down
+#Bottom up
 def numberOfPaths( m, n ):
 
 	T = [ [ 0 for _ in range(n)] for _ in range(m) ]
@@ -36,4 +36,4 @@ def numberOfPaths( m, n ):
 
 	return  T[n-1][m-1]
 
-print numberOfPaths(50,50)
+print (numberOfPaths(10,10))

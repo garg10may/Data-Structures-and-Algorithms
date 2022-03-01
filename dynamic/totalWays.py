@@ -22,30 +22,30 @@ count = 0
 print (totalSteps(10))
 print ('No. of calls %s'%(count))
 
-def totalSteps(n):
+def totalSteps2(n):
 
 	global count
 	count += 1
 
-	d= {}
-	d[0] = 1
-	d[1] = 1
-	d[2] = 2
+	d2= {}
+	d2[0] = 1
+	d2[1] = 1
+	d2[2] = 2
 
 	for i in range(3,n+1):
-		d[i] = d[i-1] + d[i-2] + d[i-3]
+		d2[i] = d2[i-1] + d2[i-2] + d2[i-3]
 
 
-	return d[n]
+	return d2[n]
 
 count  =0
-print (totalSteps(10))
+print (totalSteps2(10))
 print ('No. of calls %s'%(count))
 
 #no idea what you are doing in the above solutions
 #2nd March 2022, it's clearly a 0/1 knapsack problem
 
-def totalSteps3(coins, amount):
+def totalSteps3(coins, amount): 
 	if amount == 0:
 		return 1
 	if coins == [] or amount <0:
@@ -55,5 +55,6 @@ def totalSteps3(coins, amount):
 
 print (totalSteps3([1,2,3], 10))
 # lol, output is 14 which is incorrect, I think it's due the fact that person is drunk and 
-# can come back also
-
+# can come back also, no actually it's due to the fact that permutations are also valid
+# like 122 and 212, 221 are all different ways to cover that distance. 
+# and calculating permutation using this approach won't be correct/best approach use above only
