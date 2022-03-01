@@ -73,13 +73,15 @@ def count(coins, amount, d={}):
         d[(coins, amount)] = count( coins, amount-coins[0]) + count( coins[1:], amount)
         return d[(coins, amount)] 
 
-print (" ")
+print 
 numCalls = 0
 print (count(tuple(arr), amount))
 print ('No. of calls %s'%(numCalls))
 
 #using pure DP, very effective also able to calculate partitions for 10000. 
 # not possible with even with DP recursion
+# After 5 year I have no idea why this code is doing, found the below video
+# https://www.youtube.com/watch?v=_fgjrs570YE&list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr&index=16
 def count( coins, amount):
 
     row = len(coins)
@@ -99,7 +101,7 @@ def count( coins, amount):
                 T[i][j] = T[i-1][j]
     return T[i][j]
 
-print ("  ")
+print 
 arr = [1,2,3,4,5,6,7,8,9]
 amount = 50
 print (count(arr, amount))
