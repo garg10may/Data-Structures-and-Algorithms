@@ -45,9 +45,8 @@ class Tree(object):
 
         if node !=None:
             self._inOrder(node.left)
-            print (node.data),
+            print (node.data, end=' ')
             self._inOrder(node.right)
-            
     
     def postOrder(self):
         node = self.root
@@ -60,7 +59,7 @@ class Tree(object):
         if node !=None:
             self._postOrder(node.left)
             self._postOrder(node.right)
-            print (node.data),
+            print (node.data, end=" ")
 
     def preOrder(self):
         node = self.root
@@ -71,7 +70,7 @@ class Tree(object):
     def _preOrder(self, node):
         
         if node !=None:
-            print (node.data),
+            print (node.data, end=" ")
             self._preOrder(node.left)
             self._preOrder(node.right)
 
@@ -111,11 +110,15 @@ t.add(6)
 t.add(15)
 t.add(25)
 
-# t.inOrder()
-# print 
-# t.postOrder()
-# print 
-# t.preOrder()
+print('-----In Order-----')
+t.inOrder()
+print()
+print ('-----Post Order-----')
+t.postOrder()
+print() 
+print('-----Pre Order-----')
+t.preOrder()
+print()
 print ('----Level Order Traversal----')
 t.levelOrder()
 
