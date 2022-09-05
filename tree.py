@@ -1,3 +1,4 @@
+#BST -> Binary Search Tree
 
 class TreeNode(object):
 
@@ -28,7 +29,7 @@ class Tree(object):
             else:
                 self._add(node, root.right)
 
-        if node.data < self.root.data:
+        if node.data < root.data:
             if root.left ==None:
                 root.left = node
             else:
@@ -41,10 +42,10 @@ class Tree(object):
             self._inOrder(node)
             
     def _inOrder(self, node):
-        
+
         if node !=None:
             self._inOrder(node.left)
-            print node.data,
+            print (node.data),
             self._inOrder(node.right)
             
     
@@ -59,7 +60,7 @@ class Tree(object):
         if node !=None:
             self._postOrder(node.left)
             self._postOrder(node.right)
-            print node.data,
+            print (node.data),
 
     def preOrder(self):
         node = self.root
@@ -70,9 +71,19 @@ class Tree(object):
     def _preOrder(self, node):
         
         if node !=None:
-            print node.data,
+            print (node.data),
             self._preOrder(node.left)
             self._preOrder(node.right)
+
+    def levelOrder(self):
+        nodes = [self.root]
+        while nodes:
+            node = nodes.pop(0)
+            print(node.data, end=" ")
+            if node.left:
+                nodes.append(node.left)
+            if node.right:
+                nodes.append(node.right)
 
     def _height(self, node):
 
@@ -87,22 +98,26 @@ class Tree(object):
         else:
             return rheight + 1
 
+    def __str__(self):
+        return str(self.root.data)
+
 
 t = Tree()
 t.add(10)
+t.add(5)
+t.add(20)
+t.add(4)
+t.add(6)
 t.add(15)
-t.add(23)
-t.add(233)
-t.add(1)
-t.add(-9)
-t.add(21)
-t.add(0)
+t.add(25)
 
-t.inOrder()
-print 
-t.postOrder()
-print 
-t.preOrder()
+# t.inOrder()
+# print 
+# t.postOrder()
+# print 
+# t.preOrder()
+print ('----Level Order Traversal----')
+t.levelOrder()
 
 
 
