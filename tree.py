@@ -122,7 +122,8 @@ print()
 print ('----Level Order Traversal----')
 t.levelOrder()
 
-
+#notice how the inOrder, postOrder, preOrder are all DFS and same code 
+#just the print statement changes
 
 
 
