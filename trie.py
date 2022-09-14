@@ -1,9 +1,7 @@
 # Trie
 
-
 class TrieNode(object):
-    def __init__(self, data) -> None:
-        self.data = data
+    def __init__(self) -> None:
         self.children = [None] * 26
         self.lastNode = False
 
@@ -21,7 +19,7 @@ class Trie(object):
         for i in word:
             index = self._charToIndex(i)
             if not root.children[index]:
-                root.children[index] = TrieNode(i)
+                root.children[index] = TrieNode()
             root = root.children[index]
         root.lastNode = True
 
