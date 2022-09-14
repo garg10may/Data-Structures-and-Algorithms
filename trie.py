@@ -35,7 +35,13 @@ class Trie(object):
         return root.lastNode
 
     def startsWith(self, prefix: str) -> bool:
-        pass
+      root = self.root
+      for i in prefix:
+          index = self._charToIndex(i)
+          if not root.children[index]:
+              return False
+          root = root.children[index]
+      return True
 
 
 if __name__ == "__main__":
@@ -44,5 +50,6 @@ if __name__ == "__main__":
     print(trie.search("apple"))  # returns true
     print(trie.search("app"))  # returns false
     print(trie.startsWith("app"))  # returns true
+    print(trie.startsWith("apps"))  # returns False
     trie.insert("app")
     print(trie.search("app"))  # returns true
