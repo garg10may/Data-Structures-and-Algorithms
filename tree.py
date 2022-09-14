@@ -100,6 +100,19 @@ class Tree(object):
     def __str__(self):
         return str(self.root.data)
 
+    def findLeafNodes(self):
+        leafNodes = []
+        if self.root != None:
+            self._findLeafNodes(self.root, leafNodes)
+        print(leafNodes)
+
+    def _findLeafNodes(self, node, leafNodes):
+        if node != None:
+            self._findLeafNodes(node.left, leafNodes)
+            self._findLeafNodes(node.right, leafNodes)
+            if node.left == None and node.right == None:
+                leafNodes.append(node.data)
+        return leafNodes
 
 t = Tree()
 t.add(10)
@@ -121,6 +134,9 @@ t.preOrder()
 print()
 print ('----Level Order Traversal----')
 t.levelOrder()
+print()
+print('-----Leaf Nodes-----')
+t.findLeafNodes()
 
 #notice how the inOrder, postOrder, preOrder are all DFS and same code 
 #just the print statement changes
