@@ -22,5 +22,5 @@ def game(trials, rolls):
 
     return positive/trials
 
-print game(10000000,24)
+print (game(10000000,24))
 

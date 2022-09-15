@@ -2,7 +2,8 @@
 
 '''
 Find the number of unique paths in a matrix, given that you can 
-only move down or right
+only move down or right. i.e. count the number of paths from top left
+to bottom right.
 '''
 
 #Top down
@@ -10,8 +11,8 @@ def numberOfPaths( m, n, d={} ):
 	try:
 		return d[(m,n)]
 	except:			
-		if m==1 or n==1:
-			return 1
+		if m==1 or n==1: # this works since if I reach the last column or row there is only
+			return 1		# one way to reach the end
 		d[(m,n)] =  numberOfPaths( m-1, n) + numberOfPaths( m, n-1)
 		return d[ (m,n) ]
 

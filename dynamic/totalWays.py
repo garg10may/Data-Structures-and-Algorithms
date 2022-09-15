@@ -1,5 +1,6 @@
 '''
-Given a distance 'dist', count total number of ways to cover the distance with 1,2 and 3 steps. 
+Given a distance 'dist', 
+count total number of ways to cover the distance with 1,2 and 3 steps. 
 '''
 
 
@@ -44,6 +45,10 @@ print ('No. of calls %s'%(count))
 
 #no idea what you are doing in the above solutions
 #2nd March 2022, it's clearly a 0/1 knapsack problem
+
+#here you can thinking like this, you have infinite supply of 3 coins, 1,2,3
+# so you need to cover a specific amount, so you can do using knapsack
+# but it's incorrect so see why, this will clarify concept
 
 def totalSteps3(coins, amount): 
 	if amount == 0:
