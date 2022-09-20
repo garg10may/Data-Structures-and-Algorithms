@@ -23,8 +23,8 @@ def LCS(s1, s2, d = {}):
         else:
             return result2
 numCalls = 0
-print LCS('banannaorangekiwiapple', 'appleorangepomengranate')
-print 'Number of calls %s'%(numCalls)
+print (LCS('banannaorangekiwiapple', 'appleorangepomengranate'))
+print ('Number of calls %s'%(numCalls))
 
 #recursion 
 #Complexity 2^len(s1 or s2, whichever is lower)
@@ -46,13 +46,13 @@ def LCS2(s1, s2):
 
 numCalls = 0
 print
-print LCS2('banannaorangekiwiapple', 'appleorangepomengranate')
-print 'Number of calls %s'%(numCalls)
+print (LCS2('banannaorangekiwiapple', 'appleorangepomengranate'))
+print ('Number of calls %s'%(numCalls))
 #try this without the len(s1) > len(s2) condition, it should take few secs
 numCalls = 0
 print
-print LCS2('appleorangepomengranateExtraLengthAddedButSameNoOfCalls','banannaorangekiwiapple')
-print 'Number of calls %s'%(numCalls)
+print (LCS2('appleorangepomengranateExtraLengthAddedButSameNoOfCalls','banannaorangekiwiapple'))
+print ('Number of calls %s'%(numCalls))
 
 #recursion
 #highly inefficient, found on some website, my computer not able to run it
@@ -103,5 +103,5 @@ def LCS3(s1,s2):
     subString = s1[:index][-maxLength:]
     return subString
 
-print 
-print LCS3('banannaorangekiwip', 'appleorangepomengranate')
+print() 
+print (LCS3('banannaorangekiwip', 'appleorangepomengranate'))

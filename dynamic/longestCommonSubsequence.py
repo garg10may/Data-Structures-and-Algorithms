@@ -132,7 +132,6 @@ def LCS(s1, s2):
 
 print(LCS("xxxapplexxx", "yyyappleyyy"))
 
-
 # 19th Sep, 2022
 # print longest common subsequence, finding the sequence itself not just the length
 # the below solution looks so easy but try to get a gist of it
@@ -148,7 +147,7 @@ print(LCS("xxxapplexxx", "yyyappleyyy"))
 # and  also uncomment print(s1,s2) line than you will understand very high number of recursions
 # take place not just 100
 
-
+#this is not using memoization to keep code clear, for better perfomrance use memoization
 def LCS(s1, s2):
     # print(s1, s2)
     if len(s1) == 0 or len(s2) == 0:
@@ -178,7 +177,8 @@ print(LCS("xxapXplex", "yyappOleyy"))
 # solving LCS iteratively
 # this is working, I was like if I am able to think on paper why I am not able 
 # to convert the same in code, iteratively using multiple pointers, tracking where
-# am I and using while loops etc. this is working. But yes recursion is best 
+# am I and using while loops etc. this is working, but it took so much time to get 
+# it working, not worth it. 
 # given we can clearly see the same problem is getting repeated
 # outer loop is like recursion only, but inner also we have to keep track where
 # am I, reset start from here etc. so best is to use recursion
@@ -211,4 +211,4 @@ def LCS(s1, s2):
         s1 = s1[1:]
     return result
 
-print(LCS("xapXplexki11w1i0", "yappOley9jki3lwni"))
+print(LCS("xxapXplex", "yyappOleyy"))
