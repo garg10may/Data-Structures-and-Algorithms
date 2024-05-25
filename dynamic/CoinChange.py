@@ -86,7 +86,7 @@ print ('No. of calls %s'%(numCalls))
 # after thinking about it for a while got it, so always note down, it's no use if you forget
 # Bottom up DP requires you to see how the recursion was precisely building the complete solution i.e. what kind of 
 # subproblems were being created and how they filled the base case hence it's somewhat difficult to write bottom up DP. 
-# In Top down you have to write a backtrack solution (which is still hard) and see the state of backtrack solution. 
+# In Top down (recursion with memoization) you have to write a backtrack solution (which is still hard) and see the state of backtrack solution. 
 # Time complexities wise bottom up DP is better since in Top down it requires function calls and therefore implicit stack formation. 
 def count( coins, amount):
 
