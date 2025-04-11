@@ -11,4 +11,24 @@ def perm(text):
       result.append(taken + j)
   return result
 
-print(perm("abc"))
+print(perm("abcd"))
+
+
+# Find all combinations
+
+def combinations(text):
+  result = set()
+  if len(text) == 1:
+    return {'', text}
+  take = text[0]
+  rest = text[1:]
+  temp = combinations(rest)
+  for i in temp:
+    result.add(take + i)
+    result.add(i)
+  return result
+
+print(combinations("abcd"))
+
+
+
