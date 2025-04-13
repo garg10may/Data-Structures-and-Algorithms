@@ -46,28 +46,23 @@ print(partitions([1,2,3,4, 5,6], 6))
 
 
 # Able to do it in single attempt. thought of how to do it on paper, converted that to code.
-# but thought iteratively 
+# but thought iteratively, O(n^3) time complexity
 def LCS(s1, s2):
   all_result = []
   for i in range(len(s1)):
     result = ''
     counter1 = i
     counter2 = 0
-    while (counter1 < len(s1)):
-      while (counter2 < len(s2)):
+    while (counter1 < len(s1)) and (counter2 < len(s2)):
         char1 = s1[counter1]
         char2 = s2[counter2]
         if char1 == char2:
           result += char1
           counter1 += 1
           counter2 += 1
-          if counter1 == len(s1):
-            break
         else:
           counter2 += 1
-      counter1 += 1
-      counter2 = 0
     all_result.append(result)
   return all_result
 
-print(LCS("naba", "bananna"))
+print(LCS("lnaab", "banannal")) 
