@@ -46,7 +46,13 @@ print(partitions([1,2,3,4, 5,6], 6))
 
 
 # Able to do it in single attempt. thought of how to do it on paper, converted that to code.
-# but thought iteratively, O(n^3) time complexity
+# but thought iteratively, O(n^3) time complexity, this is still incorrect we somehow need to backtrack 
+# because we might even skip a character even if it matches to look for other characters, like 
+# below doesn't capture BCAB since it's ends for BCB and then goies into next loop we have to say ok
+# even if B matches, let's drop it and see if without it we can find other more and better length. 
+# therefore it's better to think this in recursion itself and not in iteration.  Also be default even where 
+# iteration is simpler, recursion is more simpler it just that sometimes it can confuse how to write out that 
+# recursive approach.
 def LCS(s1, s2):
   all_result = []
   for i in range(len(s1)):
@@ -65,4 +71,35 @@ def LCS(s1, s2):
     all_result.append(result)
   return all_result
 
-print(LCS("lnaab", "banannal")) 
+
+# print(LCS("ABCBDAB", "BDCAB")) 
+
+
+def LCS2(s1, s2):
+  if not s1 or not s2:
+    return ''
+  if len(s1) == 1 and len(s2) == 1:
+    return s1 if s1 == s2 else ''
+  all_result = []
+  for j in range(len(s1)):
+    for i in range(len(s2)):
+      if s1[j] == s2[i]:
+        results = [ s1[j] + _ for _ in LCS2(s1[j+1:], s2[i+1:])]
+        all_result.extend(results)
+        break
+
+  return all_result if all_result else ''
+
+print('---'*10)
+print(LCS2("ABCBDAB", "BDCAB"))
+print(LCS2("BDCAB", "BBDAB"))
+
+def LCS_recursive(s1, s2):
+  if len(s1) == 0 or len(s2) == 0:
+    return ''
+  if s1[0] == s2[0]:
+    return s1[0] + LCS_recursive(s1[1:], s2[1:])
+  else:
+    return max(LCS_recursive(s1[1:], s2), LCS_recursive(s1, s2[1:]), key=len)
+
+# print(LCS_recursive("ABCBDAB", "BDCAB"))
