@@ -100,3 +100,15 @@ def LCS_recursive(s1, s2):
     return max(LCS_recursive(s1[1:], s2), LCS_recursive(s1, s2[1:]), key=len)
 
 # print(LCS_recursive("ABCBDAB", "BDCAB"))
+
+
+# n=total steps, k=final position
+def total_steps(n, k):
+  if n == 0 and k == 0:
+    return 1
+  if n <=0:
+    return 0
+  total = total_steps(n-1, k+1) + total_steps(n-1, k-1)
+  return total
+
+print(total_steps(30,6))
