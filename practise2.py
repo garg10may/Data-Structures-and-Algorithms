@@ -75,9 +75,8 @@ def LCS(s1, s2):
 # print(LCS("ABCBDAB", "BDCAB")) 
 
 
+# Finally got this working :) it's same thought on paper, morning time, convert that to code. 
 def LCS2(s1, s2):
-  if not s1 or not s2:
-    return ''
   if len(s1) == 1 and len(s2) == 1:
     return s1 if s1 == s2 else ''
   all_result = []
@@ -90,9 +89,7 @@ def LCS2(s1, s2):
 
   return all_result if all_result else ''
 
-print('---'*10)
 print(LCS2("ABCBDAB", "BDCAB"))
-print(LCS2("BDCAB", "BBDAB"))
 
 def LCS_recursive(s1, s2):
   if len(s1) == 0 or len(s2) == 0:
