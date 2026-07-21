@@ -11,8 +11,6 @@ class Tree(object):
 
     def __init__(self):
         self.root = None
-        self.left  = None
-        self.right = None
 
     def add(self, data):
         node = TreeNode(data)
