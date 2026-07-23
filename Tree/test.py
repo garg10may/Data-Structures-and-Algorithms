@@ -81,3 +81,23 @@ def leaves(root):
 
 print(leaves(root))
 
+def levels(root):
+    temp = [root]
+    levels = []
+    
+    while temp:
+        levels.append([i.val for i in temp])
+        temp = next_nodes(temp)
+
+    return levels
+            
+def next_nodes(nodes):
+    result = []
+    for node in nodes:
+        if node.left:
+            result.append(node.left)
+        if node.right:
+            result.append(node.right)
+    return result
+
+print(levels(root))
