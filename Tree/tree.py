@@ -90,10 +90,7 @@ class Tree(object):
         lheight = self._height(node.left)
         rheight = self._height(node.right)
         
-        if lheight > rheight:
-            return lheight + 1 
-        else:
-            return rheight + 1
+        return 1 + max(lheight, rheight)
 
     def __str__(self):
         return str(self.root.data)

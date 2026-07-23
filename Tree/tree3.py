@@ -53,11 +53,32 @@ def pre_order(root):
         return []
     return [root.data] + pre_order(root.left) + pre_order(root.right)
 
+def pre_order2(root):
+    #using iterative approach, root -> left -> right
+    nodes = [root]
+    final = []    
+    while nodes:
+        el = nodes.pop(0)
+        final.append(el.data)
+        if el.right:
+            nodes.insert(0, el.right)
+        if el.left:
+            nodes.insert(0, el.left)
+    return final
+
 def in_order(root):
     if root:
         return in_order(root.left) + [root.data] + in_order(root.right)
     else: 
         return []
+
+def in_order2(root):
+    #iterative
+    nodes = [root]
+    final = []
+    while nodes:
+        
+        
     
 def post_order(root):
     if not root:
@@ -103,6 +124,19 @@ def reverse_level_order(root):
             nodes.append(el.left)
     return final
 
+def depth(root): #maxdepth, height
+    if not root:
+        return 0
+    return 1 + max(depth(root.left), depth(root.right))
+
+def leaf_nodes(root):
+    if root:
+        if not root.left and not root.right:
+            return [root.data]
+        return leaf_nodes(root.left) + leaf_nodes(root.right)
+    else:
+        return []
+
 if __name__ == "__main__":
     
     t = Tree()
@@ -122,6 +156,7 @@ if __name__ == "__main__":
     root.left.right = Node(5)
 
     print(pre_order(root))
+    print(pre_order2(root))
     print(in_order(root))
     print(post_order(root))
     print(reverse_pre_order(root))
@@ -129,5 +164,8 @@ if __name__ == "__main__":
     print(reverse_post_order(root))
     print(level_order(root))
     print(reverse_level_order(root))
+
+    print(depth(root))
+    print(leaf_nodes(root))
     
     
