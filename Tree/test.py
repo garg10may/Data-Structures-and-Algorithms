@@ -32,6 +32,7 @@ def level_order(root):
 print(in_order(root))
 print(level_order(root))
 
+# BST (Binary Search Tree)
 # class Tree:
     
 #     def __init__(self, root=None):
@@ -101,3 +102,5 @@ def next_nodes(nodes):
     return result
 
 print(levels(root))
+
+
