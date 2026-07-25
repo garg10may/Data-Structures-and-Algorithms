@@ -69,4 +69,59 @@ print(t.dfs())
 
 
 
+class TreeNode2:
+  def __init__(self, val=0, left=None, right=None):
+    self.val = val
+    self.left = left
+    self.right = right
+    
+root = TreeNode2(1)
+root.left = TreeNode2(2)
+root.right = TreeNode2(3)
+root.left.left=TreeNode2(4)
+root.left.right = TreeNode2(5)
 
+def preOrder2(root):
+  if not root:
+    return []
+  return [root.val] + preOrder2(root.left) + preOrder2(root.right)
+    
+def levelOrder(root):
+ 
+  temp = [root]
+  nodes = []
+  while temp:
+    el = temp.pop(0)
+    nodes.append(el.val)
+    
+    if el.left:
+      temp.append(el.left)
+    if el.right:
+      temp.append(el.right)
+  
+  return nodes
+
+print(preOrder2(root))
+print(levelOrder(root))
+    
+def levels(root):
+  temp = [root]
+  levels = []
+  
+  def next_nodes(nodes):
+    result = []
+    for node in nodes:
+      if node.left:
+        result.append(node.left)
+      if node.right:
+        result.append(node.right)
+    return result
+  
+  while temp:
+    levels.append([i.val for i in temp])
+    temp = next_nodes(temp)
+    
+  return levels
+
+print(levels(root))
+    
