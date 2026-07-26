@@ -125,3 +125,18 @@ def levels(root):
 
 print(levels(root))
     
+
+def removeElement(nums, val: int) -> int:
+    
+    count = 0
+    for i, value in enumerate(nums):
+        if value == val:
+            nums[i] = '_'
+        else:
+            count +=1
+        
+    print(nums)
+    return count
+
+print(removeElement([3,2,2,3], 3))
+    
